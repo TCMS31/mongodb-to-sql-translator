@@ -1,0 +1,8 @@
+dist
+coverage
+node_modules
+project_venv
+package-lock.json
+
+# Captured command output - must stay byte-identical to what was run
+docs
