@@ -1,0 +1,17 @@
+# The project is a CLI/library, so this compose file exists to give a
+# one-command way to run the translator in a pinned Node environment rather
+# than to run a long-lived service.
+services:
+  mongo2sql:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mongodb-to-sql-translator:local
+    # Override at the command line, e.g.
+    #   docker compose run --rm mongo2sql --id "db.user.find({_id: 1})"
+    command: ['--help']
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
